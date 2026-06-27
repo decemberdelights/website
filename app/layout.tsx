@@ -1,0 +1,75 @@
+import type { Metadata } from "next";
+import { Cormorant_Garamond, Montserrat, Geist, Outfit, Bebas_Neue, Noto_Serif, Chelsea_Market } from "next/font/google";
+import "./globals.css";
+import Navbar from "@/components/navbar";
+import Footer from "@/components/footer";
+import LoadingScreen from "@/components/LoadingScreen";
+import { cn } from "@/lib/utils";
+
+const geist = Geist({ subsets: ["latin"], variable: "--font-sans" });
+
+const cormorant = Cormorant_Garamond({
+  subsets: ["latin"],
+  weight: ["300", "400", "500", "600", "700"],
+  variable: "--font-cormorant",
+  display: "swap",
+});
+
+const montserrat = Montserrat({
+  subsets: ["latin"],
+  weight: ["300", "400", "500", "600", "700", "800"],
+  variable: "--font-montserrat",
+  display: "swap",
+});
+
+const outfit = Outfit({
+  subsets: ["latin"],
+  weight: ["300", "400", "500", "600", "700", "800"],
+  variable: "--font-outfit",
+  display: "swap",
+});
+
+const bebasNeue = Bebas_Neue({
+  subsets: ["latin"],
+  weight: "400",
+  variable: "--font-bebas-neue",
+  display: "swap",
+});
+
+const notoSerif = Noto_Serif({
+  subsets: ["latin"],
+  weight: ["400", "700", "900"],
+  variable: "--font-noto-serif",
+  display: "swap",
+});
+
+const chelseaMarket = Chelsea_Market({
+  subsets: ["latin"],
+  weight: "400",
+  variable: "--font-chelsea-market",
+  display: "swap",
+});
+
+export const metadata: Metadata = {
+  title: "DecemberDelights | Fine Coffee & Cuisine",
+  description: "December Delights — fine coffee and cuisine in Hyderabad. Est. 2024.",
+};
+
+export default function RootLayout({ children }: { children: React.ReactNode }) {
+  return (
+    <html lang="en" className={cn(cormorant.variable, montserrat.variable, outfit.variable, bebasNeue.variable, notoSerif.variable, chelseaMarket.variable, "font-sans", geist.variable)}>
+      <head>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <link rel="preload" as="image" href="/bgimage.jpg" />
+        <link rel="preload" as="image" href="/logo.png" />
+      </head>
+      <body className={cn(cormorant.variable, montserrat.variable, outfit.variable, bebasNeue.variable, notoSerif.variable, chelseaMarket.variable, "font-sans", geist.variable)} style={{ margin: 0, padding: 0 }}>
+        <LoadingScreen />
+        <Navbar />
+        {children}
+        <Footer />
+      </body>
+    </html>
+  );
+}
