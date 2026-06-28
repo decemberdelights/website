@@ -41,23 +41,24 @@ const mustTryItems = [
 export default function MenuPreviewSection() {
   const videoRef = useRef<HTMLVideoElement>(null);
 
-  const featured = mustTryItems[0];
-  const grid = mustTryItems.slice(1);
+  const allItems = mustTryItems;
 
   return (
     <>
       <style>{`
         .menu-section { position: relative; z-index: 25; background: linear-gradient(180deg, #041a14 0%, #094b3d 50%, #041a14 100%); padding: 100px 80px; min-height: 100vh; display: flex; align-items: center; gap: 60px; isolation: isolate; mask-image: linear-gradient(to bottom, transparent 0%, black 5%, black 95%, transparent 100%); -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 5%, black 95%, transparent 100%); }
         .menu-content { max-width: 750px; width: 100%; position: relative; z-index: 3; margin-left: auto; }
-        .menu-featured { background: rgba(255,255,255,0.04); border: 1px solid rgba(200,169,122,0.12); border-radius: 12px; overflow: hidden; display: flex; margin-bottom: 20px; }
-        .menu-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; }
+        .menu-featured { background: rgba(255,255,255,0.04); border: 1px solid rgba(200,169,122,0.12); border-radius: 12px; overflow: hidden; display: flex; }
+        .menu-grid-equal { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+        .menu-card-vert { background: rgba(255,255,255,0.04); border: 1px solid rgba(200,169,122,0.12); border-radius: 12px; overflow: hidden; transition: transform 0.3s ease, border-color 0.3s ease; }
+        .menu-card-vert:hover { transform: translateY(-4px); border-color: rgba(200,169,122,0.3); }
         .menu-video-bg { position: absolute; top: 5%; left: 2%; width: 45%; height: 85%; object-fit: contain; z-index: 1; opacity: 1; filter: brightness(1.3); mask-image: linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%), linear-gradient(to bottom, transparent 0%, black 12%, black 88%, transparent 100%); mask-composite: intersect; -webkit-mask-image: linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%), linear-gradient(to bottom, transparent 0%, black 12%, black 88%, transparent 100%); -webkit-mask-composite: source-in; }
         @media (max-width: 768px) {
           .menu-section { flex-direction: column; padding: 60px 24px; min-height: auto; gap: 30px; }
           .menu-content { margin-left: 0; max-width: 100%; }
           .menu-featured { flex-direction: column; }
           .menu-featured > div:first-child { width: 100% !important; height: 200px !important; }
-          .menu-grid { grid-template-columns: 1fr; }
+          .menu-grid-equal { grid-template-columns: repeat(2, 1fr); }
           .menu-video-bg { position: relative; top: 0; left: 0; width: 100%; height: 200px; object-fit: cover; mask-image: none; -webkit-mask-image: none; mask-composite: unset; -webkit-mask-composite: unset; opacity: 0.6; border-radius: 12px; order: -1; }
         }
         @media (max-width: 480px) {
@@ -83,32 +84,18 @@ export default function MenuPreviewSection() {
           <h2 style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "clamp(36px, 6vw, 90px)", fontWeight: 700, color: "#fff", marginBottom: "20px", lineHeight: 1.15 }}>
             <ScrollFloat containerClassName="!my-0" textClassName="pb-1">Must-Try Delights</ScrollFloat>
           </h2>
-          <p style={{ fontFamily: "'Montserrat', sans-serif", fontSize: "15px", fontWeight: 400, lineHeight: 1.8, color: "rgba(255,255,255,0.85)", maxWidth: "450px", marginBottom: "40px" }}>
-            From handcrafted coffees to indulgent desserts, every item is made with love.
+          <p style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "clamp(16px, 2.5vw, 20px)", fontWeight: 400, fontStyle: "italic", lineHeight: 1.6, color: "rgba(255,255,255,0.7)", maxWidth: "700px", marginBottom: "40px", position: "relative", paddingLeft: "24px", borderLeft: "3px solid rgba(200,169,122,0.4)" }}>
+            Carefully crafted with the finest ingredients, every dish and drink is designed to delight your senses and create unforgettable moments.
           </p>
           <div style={{ marginBottom: "40px" }}>
-            <div className="menu-featured">
-              <div style={{ width: "280px", height: "220px", position: "relative", flexShrink: 0 }}>
-                <Image src={featured.image} alt={featured.name} fill loading="lazy" sizes="280px" style={{ objectFit: "cover" }} />
-              </div>
-              <div style={{ padding: "20px 20px", display: "flex", flexDirection: "column", justifyContent: "center" }}>
-                <span style={{ fontFamily: "'Montserrat', sans-serif", fontSize: "9px", fontWeight: 600, letterSpacing: "2px", textTransform: "uppercase", color: "#c8a97a", marginBottom: "8px" }}>
-                  Signature
-                </span>
-                <h3 style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "clamp(24px, 6vw, 32px)", fontWeight: 700, color: "#c8a97a", marginBottom: "8px" }}>
-                  {featured.name}
-                </h3>
-                <p style={{ fontFamily: "'Montserrat', sans-serif", fontSize: "13px", fontWeight: 400, color: "rgba(255,255,255,0.8)", lineHeight: 1.6, maxWidth: "300px" }}>{featured.description}</p>
-              </div>
-            </div>
-            <div className="menu-grid">
-              {grid.map((item, i) => (
-                <div key={i} style={{ background: "rgba(255,255,255,0.04)", border: "1px solid rgba(200,169,122,0.12)", borderRadius: "12px", overflow: "hidden", display: "flex" }}>
-                  <div style={{ width: "120px", height: "120px", position: "relative", flexShrink: 0 }}>
-                    <Image src={item.image} alt={item.name} fill loading="lazy" sizes="120px" style={{ objectFit: "cover" }} />
+            <div className="menu-grid-equal">
+              {allItems.map((item, i) => (
+                <div key={i} className="menu-card-vert">
+                  <div style={{ width: "100%", height: "160px", position: "relative" }}>
+                    <Image src={item.image} alt={item.name} fill loading="lazy" sizes="(max-width: 768px) 50vw, 33vw" style={{ objectFit: "cover" }} />
                   </div>
-                  <div style={{ padding: "16px 20px", display: "flex", flexDirection: "column", justifyContent: "center" }}>
-                    <h3 style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "20px", fontWeight: 700, color: "#c8a97a", marginBottom: "6px" }}>
+                  <div style={{ padding: "14px 16px" }}>
+                    <h3 style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "18px", fontWeight: 700, color: "#c8a97a", marginBottom: "4px" }}>
                       {item.name}
                     </h3>
                     <p style={{ fontFamily: "'Montserrat', sans-serif", fontSize: "11px", fontWeight: 400, color: "rgba(255,255,255,0.8)", lineHeight: 1.5 }}>{item.description}</p>

@@ -26,7 +26,7 @@ export default function LoadingScreen() {
       flexDirection: "column",
       alignItems: "center",
       justifyContent: "center",
-      gap: "20px",
+      gap: "8px",
       opacity: fade ? 0 : 1,
       transition: "opacity 0.3s ease",
       pointerEvents: fade ? "none" : "auto",
@@ -40,21 +40,21 @@ export default function LoadingScreen() {
         style={{
           width: "min(120px, 30vw)",
           height: "auto",
-          borderRadius: "50%",
+          borderRadius: 0,
           filter: "drop-shadow(0 4px 20px rgba(200,169,122,0.3))",
         }}
       />
       <p style={{
-        fontFamily: "var(--font-chelsea-market), cursive",
-        fontSize: "clamp(16px, 3vw, 24px)",
-        fontWeight: 700,
-        color: "#f4b954",
+        fontFamily: "'Montserrat', sans-serif",
+        fontSize: "clamp(12px, 3vw, 20px)",
+        fontWeight: 800,
+        color: "#D05A68",
         textAlign: "center",
         letterSpacing: "3px",
         textTransform: "uppercase",
         margin: 0,
       }}>
-        NOT JUST A CAFE..!!
+        NOT JUST A CAFE
       </p>
     </div>
   );

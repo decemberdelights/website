@@ -146,7 +146,7 @@ export default function ShopPage() {
 
   return (
     <>
-      <main style={{ minHeight: "100vh", background: "#fff", padding: "8rem 0 4rem" }}>
+      <main data-bg="light" style={{ minHeight: "100vh", background: "#fff", padding: "8rem 0 4rem" }}>
         <section data-bg="dark" style={{ background: "#1b3c33", color: "#fdf9f4", padding: "5rem 5%", textAlign: "center" }}>
           <p style={{ fontFamily: "var(--font-outfit), sans-serif", color: "#c8a97a", fontSize: "0.8rem", fontWeight: 700, letterSpacing: "0.3em", textTransform: "uppercase", marginBottom: "0.5rem" }}>Shop</p>
           <h1 style={{ fontFamily: "var(--font-bebas-neue), sans-serif", fontSize: "clamp(1.8rem, 6vw, 4.5rem)", color: "#fdf9f4" }}>Premium Coffee & Products</h1>

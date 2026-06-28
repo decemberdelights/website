@@ -35,7 +35,7 @@ export default function AboutSection() {
             </span>
             <div style={{ width: "60px", height: "3px", background: "#c8a97a", marginBottom: "32px" }} />
             <h2 style={{ fontFamily: "'Cormorant Garamond', serif", fontWeight: 700, lineHeight: 0.95, color: "#094b3d", marginBottom: "40px", textTransform: "uppercase" }}>
-              <ScrollFloat containerClassName="!my-0">NOT JUST A CAFE!</ScrollFloat>
+              <ScrollFloat containerClassName="!my-0">NOT JUST A CAFE.</ScrollFloat>
             </h2>
             <p style={{ fontFamily: "'Montserrat', sans-serif", fontWeight: 500, lineHeight: 1.8, color: "#1a1a1a", marginBottom: "22px", maxWidth: "540px" }}>
               December Delights was built on a simple belief: great coffee deserves a great experience.

@@ -1,12 +1,14 @@
 "use client";
 
+import dynamic from "next/dynamic";
 import HeroSection from "@/components/sections/HeroSection";
 import AboutSection from "@/components/sections/AboutSection";
-import MenuPreviewSection from "@/components/sections/MenuPreviewSection";
-import VisitSection from "@/components/sections/VisitSection";
-import FranchiseSection from "@/components/sections/FranchiseSection";
-import CareerSection from "@/components/sections/CareerSection";
-import ShopSection from "@/components/sections/ShopSection";
+
+const MenuPreviewSection = dynamic(() => import("@/components/sections/MenuPreviewSection"));
+const ShopSection = dynamic(() => import("@/components/sections/ShopSection"));
+const VisitSection = dynamic(() => import("@/components/sections/VisitSection"));
+const FranchiseSection = dynamic(() => import("@/components/sections/FranchiseSection"));
+const CareerSection = dynamic(() => import("@/components/sections/CareerSection"));
 
 export default function Home() {
   return (

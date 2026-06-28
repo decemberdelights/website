@@ -66,7 +66,7 @@ export default function Navbar() {
         .dd-nav {
           position: fixed;
           top: 12px; left: 16px; right: 16px;
-          z-index: 100;
+          z-index: 1000;
           display: flex;
           align-items: center;
           justify-content: space-between;
@@ -77,23 +77,23 @@ export default function Navbar() {
           transform: translateZ(0);
           backdrop-filter: blur(20px) saturate(180%);
           -webkit-backdrop-filter: blur(20px) saturate(180%);
-          background: rgba(255, 255, 255, 0.08);
-          border: 1px solid rgba(255, 255, 255, 0.18);
-          box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12), inset 0 1px 0 rgba(255, 255, 255, 0.15), inset 0 -1px 0 rgba(255, 255, 255, 0.05);
+          background: rgba(255, 255, 255, 0.15);
+          border: 1px solid rgba(255, 255, 255, 0.25);
+          box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15), inset 0 1px 0 rgba(255, 255, 255, 0.2), inset 0 -1px 0 rgba(255, 255, 255, 0.08);
         }
         .dd-nav.scrolled {
           transform: translateZ(0) scale(0.97) translateY(-2px);
         }
         .dd-nav.dark-bg {
-          background: rgba(255, 255, 255, 0.06);
-          border-color: rgba(255, 255, 255, 0.12);
-          box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.1), inset 0 -1px 0 rgba(255, 255, 255, 0.03);
+          background: rgba(0, 0, 0, 0.35);
+          border-color: rgba(255, 255, 255, 0.15);
+          box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25);
           backdrop-filter: blur(24px) saturate(200%);
           -webkit-backdrop-filter: blur(24px) saturate(200%);
         }
         .dd-nav:not(.dark-bg) {
-          background: rgba(255, 255, 255, 0.35);
-          border-color: rgba(255, 255, 255, 0.5);
+          background: rgba(255, 255, 255, 0.65);
+          border-color: rgba(255, 255, 255, 0.7);
           box-shadow: 0 8px 32px rgba(0, 0, 0, 0.06), inset 0 1px 0 rgba(255, 255, 255, 0.4), inset 0 -1px 0 rgba(255, 255, 255, 0.1);
         }
 
@@ -233,7 +233,7 @@ export default function Navbar() {
             className="dd-logo-icon"
             src="/logo-icon.png"
             alt="December Delights"
-            style={{ height: "30px", width: "30px", marginRight: "10px", borderRadius: "50%", pointerEvents: "none" }}
+            style={{ height: "30px", width: "30px", marginRight: "10px", pointerEvents: "none" }}
           />
           <div className="dd-nav-center">
             {links.map((link) => (
@@ -250,7 +250,7 @@ export default function Navbar() {
           src="/logo-icon.png"
           alt="December Delights"
           style={{
-            height: "28px", width: "28px", borderRadius: "50%",
+            height: "28px", width: "28px",
             pointerEvents: "none",
             display: "none",
           }}
@@ -270,7 +270,7 @@ export default function Navbar() {
       {/* Mobile menu */}
       <div className={`dd-mobile-menu ${menuOpen ? "open" : ""}`} role="dialog" aria-label="Navigation menu">
         {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img src="/logo-icon.png" alt="" style={{ height: "48px", width: "48px", borderRadius: "50%", marginBottom: "0.5rem", opacity: 0.9 }} />
+        <img src="/logo-icon.png" alt="" style={{ height: "48px", width: "48px", marginBottom: "0.5rem", opacity: 0.9 }} />
         <div className="dd-mobile-divider" />
         {links.map((link) => (
           <a key={link.label} href={link.href} onClick={() => setMenuOpen(false)}>

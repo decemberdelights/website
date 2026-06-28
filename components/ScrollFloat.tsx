@@ -33,14 +33,9 @@ const ScrollFloat: React.FC<ScrollFloatProps> = ({
           chars.forEach((char, i) => {
             char.style.transition = `opacity ${animationDuration}s cubic-bezier(0.22,1,0.36,1) ${i * stagger}s, transform ${animationDuration}s cubic-bezier(0.22,1,0.36,1) ${i * stagger}s`;
             char.style.opacity = "1";
-            char.style.transform = "none";
+            char.style.transform = "translateZ(0)";
           });
-        } else {
-          chars.forEach((char) => {
-            char.style.transition = "none";
-            char.style.opacity = "0";
-            char.style.transform = "translateY(100%)";
-          });
+          observer.unobserve(el);
         }
       },
       { threshold: 0.1 }
