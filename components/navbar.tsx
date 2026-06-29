@@ -51,9 +51,9 @@ export default function Navbar() {
 
   const links = [
     { label: "Home", href: "/" },
-    { label: "About Us", href: "/#our-story" },
     { label: "Shop", href: "/shop/" },
     { label: "Careers", href: "/careers/" },
+    { label: "About Us", href: "/#our-story" },
     { label: "Contact", href: "/contact/" },
     { label: "Track Order", href: "/track/" },
   ];
